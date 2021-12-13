@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#Script pour lancer RootStemExtractor.sh sur mac
+#Vous devez avoir installer Anaconda (python 2.x)
+
+#source .bash_profile pour Anaconda
+source ~/.bash_profile
+#Run python script
+python2 ./RootStemExtractor.py

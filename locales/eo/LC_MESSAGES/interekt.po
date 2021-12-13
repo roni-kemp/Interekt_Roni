@@ -1,0 +1,363 @@
+# Esperanto translations for Interekt package.
+# Felix Hartmann <felix.hartmann@inrae.fr>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2021-04-09\n"
+"POT-Creation-Date: 2021-03-18 16:33+CET\n"
+"PO-Revision-Date: 2021-03-14 21:10+0100\n"
+"Last-Translator: Felix Hartmann <felix.hartmann@inrae.fr>\n"
+"Language-Team: Esperanto\n"
+"Language: eo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../interekt.py:445
+msgid "Loading data"
+msgstr "Enlagado de datumoj"
+
+#: ../interekt.py:507
+msgid "List of open images"
+msgstr "Listo de malfermitaj bildoj"
+
+#: ../interekt.py:565
+msgid "Export time series"
+msgstr "Eksporti tempajn seriojn"
+
+#: ../interekt.py:640
+msgid "Export skeleton"
+msgstr "Eksporti skeleton"
+
+#: ../interekt.py:817
+msgid "Image processing"
+msgstr "Bildotraktado"
+
+#: ../interekt.py:869
+msgid "Saving data into the .h5 file"
+msgstr "Konservado de datumoj en la .h5 dosieron"
+
+#: ../interekt.py:883
+msgid "Processing extracted data"
+msgstr "Traktado de eltiritaj datumoj"
+
+#: ../interekt.py:1122
+msgid "Export data from organ"
+msgstr "Eksporti organodatumojn"
+
+#: ../interekt.py:1193
+msgid "Settings for organ"
+msgstr "Organo-agordoj"
+
+#: ../interekt.py:1201
+msgid "Organ name:"
+msgstr "Organonomo:"
+
+#: ../interekt.py:1206
+msgid "Threshold sensitivity:"
+msgstr "Sojla distingivo:"
+
+#: ../interekt.py:1216
+msgid "Save"
+msgstr "Konservi"
+
+#: ../interekt.py:1221
+msgid "Export organ at"
+msgstr "Eksporti la organon ĉe"
+
+#: ../interekt.py:1222
+msgid "to csv."
+msgstr "al csv."
+
+#: ../interekt.py:1403
+msgid "Angles and curvatures for organ"
+msgstr "Anguloj kaj kurbecoj por la organo"
+
+#: ../interekt.py:1599
+msgid "Estimation of the growth rate for organ"
+msgstr "Pritakso de la kreskorapideco por la organo"
+
+#: ../interekt.py:1864
+msgid "Estimation of the growth length for organ"
+msgstr "Pritakso de la kreskolongo por la organo"
+
+#: ../interekt.py:1970
+msgid "The growth rate has to be estimated before the growth length."
+msgstr "La kreskorapideco devas esti pritaksata antaŭ ol la kreskolongo."
+
+#: ../interekt.py:2194
+msgid "Estimation of beta for organ"
+msgstr "Pritakso de beto por la organo"
+
+#: ../interekt.py:2468
+msgid "No times associated with photographs"
+msgstr "Neniu tempo ligita al fotoj"
+
+#: ../interekt.py:2469
+msgid ""
+"Without time data, the computation of gamma will be meaningless. The "
+"computation of gamma_tilde is still possible."
+msgstr ""
+"Sen tempodatumoj, la komputado de gamo estos sensifgnifa. La komputado de "
+"gamo_tilde malgraŭe eblas."
+
+#: ../interekt.py:2501
+msgid "Estimation of gamma for organ"
+msgstr "Pritakso de gamo por la organo"
+
+#: ../interekt.py:2645
+msgid ""
+"Units of relative growth rate and gamma do not match. Compute the growth "
+"rate again."
+msgstr ""
+"La mezurunuoj de la relativa kreskorapideco kaj gamo ne kongruas. Rekomputu "
+"la kreskorapidecon."
+
+#: ../interekt.py:2768
+msgid "No steady-state image selected"
+msgstr "Neniu selektita bildo en senmova stato"
+
+#: ../interekt.py:2769
+msgid "Please select first the steady-state image."
+msgstr "Bonvolu unue selekti la senmovostata bildo."
+
+#: ../interekt.py:2811
+msgid "The growth length has to be estimated before B."
+msgstr "La kreskolongo devas esti pritaksata antaŭ ol B."
+
+#: ../interekt.py:2826
+msgid "B for organ"
+msgstr "B por la organo"
+
+#: ../interekt.py:3154 ../interekt.py:3507
+msgid "Scale"
+msgstr "Skalo"
+
+#: ../interekt.py:3176
+msgid "Measure distance"
+msgstr "Mezuri distancon"
+
+#: ../interekt.py:3180
+msgid "Update scale"
+msgstr "Ĝisdatigi skalon"
+
+#: ../interekt.py:3215
+msgid "Steady-state image"
+msgstr "Senmovostata bildo"
+
+#: ../interekt.py:3244
+msgid "Exclude image from time series"
+msgstr "Ekskludi la bildon el la tempajn seriojn."
+
+#: ../interekt.py:3279
+msgid "Export phenotyping data"
+msgstr "Eksporti datumojn de fenotipado"
+
+#: ../interekt.py:3436
+msgid "version"
+msgstr "versio"
+
+#: ../interekt.py:3447
+msgid "Average time series"
+msgstr "Averaĝaj tempaj serioj"
+
+#: ../interekt.py:3452
+msgid "Time series for each organ"
+msgstr "Tempaj serioj por ĉiu organo"
+
+#: ../interekt.py:3457
+msgid "Global time series (tip angle and length)"
+msgstr "Ĝeneralaj tempaj serioj (pintangulo kaj longo)"
+
+#: ../interekt.py:3462
+msgid "Global time series + skeleton"
+msgstr "Ĝeneralaj tempaj serioj + skeleto"
+
+#: ../interekt.py:3467
+msgid "Phenotype (graviception, proprioception)"
+msgstr "Fenotipo (gravitsenso, propriocepto)"
+
+#: ../interekt.py:3471
+msgid "Export"
+msgstr "Eksporti"
+
+#: ../interekt.py:3475 ../interekt.py:3526
+msgid "Time series"
+msgstr "Tempaj serioj"
+
+#: ../interekt.py:3476
+msgid "Plots"
+msgstr "Grafikaĵoj"
+
+#: ../interekt.py:3484
+msgid "Extract photo time"
+msgstr "Eltiri fototempojn"
+
+#: ../interekt.py:3490
+msgid "Angle modulo 360 (0->360)"
+msgstr "Angulo module 360 (0->360)"
+
+#: ../interekt.py:3503
+msgid "Select steady-state image"
+msgstr "Selekti senmovostatan bildon"
+
+#: ../interekt.py:3514
+msgid "Options"
+msgstr "Opcioj"
+
+#: ../interekt.py:3530
+msgid "Angles and curvatures"
+msgstr "Anguloj kaj kurbecoj"
+
+#: ../interekt.py:3534
+msgid "Estimate growth rate"
+msgstr "Pritaksi la kreskorapidecon"
+
+#: ../interekt.py:3538
+msgid "Estimate growth length"
+msgstr "Pritaksi la kreskolongon"
+
+#: ../interekt.py:3542
+msgid "Estimate beta"
+msgstr "Pritaksi beton"
+
+#: ../interekt.py:3546
+msgid "Estimate gamma"
+msgstr "Pritaksi gamon"
+
+#: ../interekt.py:3550
+msgid "Estimate B"
+msgstr "Pritaksi B"
+
+#: ../interekt.py:3554
+msgid "Settings"
+msgstr "Agordoj"
+
+#: ../interekt.py:3558
+msgid "Suppress the base"
+msgstr "Forigi la bazon"
+
+#: ../interekt.py:3569
+msgid "Open"
+msgstr "Malfermi"
+
+#: ../interekt.py:3571
+msgid "Image list"
+msgstr "Bildolisto"
+
+#: ../interekt.py:3574
+msgid "Add a base"
+msgstr "Aldoni bazon"
+
+#: ../interekt.py:3577
+msgid "Suppress all bases"
+msgstr "Forigi ĉiujn bazojn"
+
+#: ../interekt.py:3580
+msgid "Process"
+msgstr "Trakti"
+
+#: ../interekt.py:3583
+msgid "Add a mark"
+msgstr "Aldoni markon"
+
+#: ../interekt.py:3586
+msgid "Suppress all marks"
+msgstr "Forigi ĉiujn markojn"
+
+#: ../interekt.py:3991
+msgid "Load images or result file"
+msgstr ""
+"Malfermu bildojn\n"
+"aŭ\n"
+"dosieron de rezultoj (.h5)"
+
+#: ../interekt.py:4427
+msgid "Choose images to process"
+msgstr "Elekti traktontajn bildojn"
+
+#: ../interekt.py:4552
+msgid ""
+"Creating the file interekt_data.h5\n"
+"in the folder"
+msgstr ""
+"Kreado de dosiero interekt_data.h5\n"
+"en la dosierujo"
+
+#: ../interekt.py:4553
+msgid ""
+"\n"
+"Converting images..."
+msgstr ""
+"\n"
+"Konvertado de bildoj..."
+
+#: ../interekt.py:4598 ../interekt.py:4599
+msgid "organ"
+msgstr "organo"
+
+#: ../interekt.py:4600
+msgid "image"
+msgstr "bildo"
+
+#: ../interekt.py:4601
+msgid "time"
+msgstr "tempo"
+
+#: ../interekt.py:4602
+msgid "Time"
+msgstr "Tempo"
+
+#: ../interekt.py:4603
+msgid "photo"
+msgstr "foto"
+
+#: ../interekt.py:4604
+msgid "photo number"
+msgstr "numero de foto"
+
+#: ../interekt.py:4605
+msgid "length"
+msgstr "longo"
+
+#: ../interekt.py:4606
+msgid "curvilinear abscissa"
+msgstr "kurba absciso"
+
+#: ../interekt.py:4607
+msgid "angle"
+msgstr "angulo"
+
+#: ../interekt.py:4608
+msgid "tip angle"
+msgstr "pintangulo"
+
+#: ../interekt.py:4609
+msgid "(deg)"
+msgstr "(deg)"
+
+#: ../interekt.py:4610
+msgid "curvature"
+msgstr "kurbeco"
+
+#: ../interekt.py:4611
+msgid "growth length"
+msgstr "kreskolongo"
+
+#: ../interekt.py:4612
+msgid "residuals"
+msgstr "Reziduoj"
+
+#: ../interekt.py:4613
+msgid "initial"
+msgstr "unua"
+
+#: ../interekt.py:4614
+msgid "Missing data"
+msgstr "Mankantaj datumoj"
+
+#: ../interekt.py:4615
+msgid "Unit mismatch"
+msgstr "Unuoj malkongruas"

@@ -1,0 +1,348 @@
+# List of strings to translate.
+# Félix Hartmann <felix.hartmann@inrae.fr>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2021-04-09\n"
+"POT-Creation-Date: 2021-03-18 16:33+CET\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ../interekt.py:445
+msgid "Loading data"
+msgstr ""
+
+#: ../interekt.py:507
+msgid "List of open images"
+msgstr ""
+
+#: ../interekt.py:565
+msgid "Export time series"
+msgstr ""
+
+#: ../interekt.py:640
+msgid "Export skeleton"
+msgstr ""
+
+#: ../interekt.py:817
+msgid "Image processing"
+msgstr ""
+
+#: ../interekt.py:869
+msgid "Saving data into the .h5 file"
+msgstr ""
+
+#: ../interekt.py:883
+msgid "Processing extracted data"
+msgstr ""
+
+#: ../interekt.py:1122
+msgid "Export data from organ"
+msgstr ""
+
+#: ../interekt.py:1193
+msgid "Settings for organ"
+msgstr ""
+
+#: ../interekt.py:1201
+msgid "Organ name:"
+msgstr ""
+
+#: ../interekt.py:1206
+msgid "Threshold sensitivity:"
+msgstr ""
+
+#: ../interekt.py:1216
+msgid "Save"
+msgstr ""
+
+#: ../interekt.py:1221
+msgid "Export organ at"
+msgstr ""
+
+#: ../interekt.py:1222
+msgid "to csv."
+msgstr ""
+
+#: ../interekt.py:1403
+msgid "Angles and curvatures for organ"
+msgstr ""
+
+#: ../interekt.py:1599
+msgid "Estimation of the growth rate for organ"
+msgstr ""
+
+#: ../interekt.py:1864
+msgid "Estimation of the growth length for organ"
+msgstr ""
+
+#: ../interekt.py:1970
+msgid "The growth rate has to be estimated before the growth length."
+msgstr ""
+
+#: ../interekt.py:2194
+msgid "Estimation of beta for organ"
+msgstr ""
+
+#: ../interekt.py:2468
+msgid "No times associated with photographs"
+msgstr ""
+
+#: ../interekt.py:2469
+msgid "Without time data, the computation of gamma will be meaningless. The computation of gamma_tilde is still possible."
+msgstr ""
+
+#: ../interekt.py:2501
+msgid "Estimation of gamma for organ"
+msgstr ""
+
+#: ../interekt.py:2645
+msgid "Units of relative growth rate and gamma do not match. Compute the growth rate again."
+msgstr ""
+
+#: ../interekt.py:2768
+msgid "No steady-state image selected"
+msgstr ""
+
+#: ../interekt.py:2769
+msgid "Please select first the steady-state image."
+msgstr ""
+
+#: ../interekt.py:2811
+msgid "The growth length has to be estimated before B."
+msgstr ""
+
+#: ../interekt.py:2826
+msgid "B for organ"
+msgstr ""
+
+#: ../interekt.py:3154 ../interekt.py:3507
+msgid "Scale"
+msgstr ""
+
+#: ../interekt.py:3176
+msgid "Measure distance"
+msgstr ""
+
+#: ../interekt.py:3180
+msgid "Update scale"
+msgstr ""
+
+#: ../interekt.py:3215
+msgid "Steady-state image"
+msgstr ""
+
+#: ../interekt.py:3244
+msgid "Exclude image from time series"
+msgstr ""
+
+#: ../interekt.py:3279
+msgid "Export phenotyping data"
+msgstr ""
+
+#: ../interekt.py:3436
+msgid "version"
+msgstr ""
+
+#: ../interekt.py:3447
+msgid "Average time series"
+msgstr ""
+
+#: ../interekt.py:3452
+msgid "Time series for each organ"
+msgstr ""
+
+#: ../interekt.py:3457
+msgid "Global time series (tip angle and length)"
+msgstr ""
+
+#: ../interekt.py:3462
+msgid "Global time series + skeleton"
+msgstr ""
+
+#: ../interekt.py:3467
+msgid "Phenotype (graviception, proprioception)"
+msgstr ""
+
+#: ../interekt.py:3471
+msgid "Export"
+msgstr ""
+
+#: ../interekt.py:3475 ../interekt.py:3526
+msgid "Time series"
+msgstr ""
+
+#: ../interekt.py:3476
+msgid "Plots"
+msgstr ""
+
+#: ../interekt.py:3484
+msgid "Extract photo time"
+msgstr ""
+
+#: ../interekt.py:3490
+msgid "Angle modulo 360 (0->360)"
+msgstr ""
+
+#: ../interekt.py:3503
+msgid "Select steady-state image"
+msgstr ""
+
+#: ../interekt.py:3514
+msgid "Options"
+msgstr ""
+
+#: ../interekt.py:3530
+msgid "Angles and curvatures"
+msgstr ""
+
+#: ../interekt.py:3534
+msgid "Estimate growth rate"
+msgstr ""
+
+#: ../interekt.py:3538
+msgid "Estimate growth length"
+msgstr ""
+
+#: ../interekt.py:3542
+msgid "Estimate beta"
+msgstr ""
+
+#: ../interekt.py:3546
+msgid "Estimate gamma"
+msgstr ""
+
+#: ../interekt.py:3550
+msgid "Estimate B"
+msgstr ""
+
+#: ../interekt.py:3554
+msgid "Settings"
+msgstr ""
+
+#: ../interekt.py:3558
+msgid "Suppress the base"
+msgstr ""
+
+#: ../interekt.py:3569
+msgid "Open"
+msgstr ""
+
+#: ../interekt.py:3571
+msgid "Image list"
+msgstr ""
+
+#: ../interekt.py:3574
+msgid "Add a base"
+msgstr ""
+
+#: ../interekt.py:3577
+msgid "Suppress all bases"
+msgstr ""
+
+#: ../interekt.py:3580
+msgid "Process"
+msgstr ""
+
+#: ../interekt.py:3583
+msgid "Add a mark"
+msgstr ""
+
+#: ../interekt.py:3586
+msgid "Suppress all marks"
+msgstr ""
+
+#: ../interekt.py:3991
+msgid "Load images or result file"
+msgstr ""
+
+#: ../interekt.py:4427
+msgid "Choose images to process"
+msgstr ""
+
+#: ../interekt.py:4552
+msgid ""
+"Creating the file interekt_data.h5\n"
+"in the folder"
+msgstr ""
+
+#: ../interekt.py:4553
+msgid ""
+"\n"
+"Converting images..."
+msgstr ""
+
+#: ../interekt.py:4598 ../interekt.py:4599
+msgid "organ"
+msgstr ""
+
+#: ../interekt.py:4600
+msgid "image"
+msgstr ""
+
+#: ../interekt.py:4601
+msgid "time"
+msgstr ""
+
+#: ../interekt.py:4602
+msgid "Time"
+msgstr ""
+
+#: ../interekt.py:4603
+msgid "photo"
+msgstr ""
+
+#: ../interekt.py:4604
+msgid "photo number"
+msgstr ""
+
+#: ../interekt.py:4605
+msgid "length"
+msgstr ""
+
+#: ../interekt.py:4606
+msgid "curvilinear abscissa"
+msgstr ""
+
+#: ../interekt.py:4607
+msgid "angle"
+msgstr ""
+
+#: ../interekt.py:4608
+msgid "tip angle"
+msgstr ""
+
+#: ../interekt.py:4609
+msgid "(deg)"
+msgstr ""
+
+#: ../interekt.py:4610
+msgid "curvature"
+msgstr ""
+
+#: ../interekt.py:4611
+msgid "growth length"
+msgstr ""
+
+#: ../interekt.py:4612
+msgid "residuals"
+msgstr ""
+
+#: ../interekt.py:4613
+msgid "initial"
+msgstr ""
+
+#: ../interekt.py:4614
+msgid "Missing data"
+msgstr ""
+
+#: ../interekt.py:4615
+msgid "Unit mismatch"
+msgstr ""
+

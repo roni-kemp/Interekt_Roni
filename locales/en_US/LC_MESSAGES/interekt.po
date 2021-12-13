@@ -1,0 +1,20 @@
+# English translations for Interekt package.
+# Felix Hartmann <felix.hartmann@inrae.fr>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2021-04-09\n"
+"POT-Creation-Date: 2020-06-17 15:26+CEST\n"
+"PO-Revision-Date: 2020-06-17 15:36+0200\n"
+"Last-Translator: Felix Hartmann <felix.hartmann@inrae.fr>\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: RootStemExtractor.py:3757
+msgid "Load images or result file"
+msgstr "Load images\nor\na result file (.h5)"
