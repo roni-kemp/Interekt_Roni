@@ -127,31 +127,34 @@ def draw_line(top_point, top_angle, base_point, base_angle, img_i, output_fnames
 #%
     ## Load img
     img = cv2.imread(output_fnames[img_i].decode())
-
-    ## Calc the line representing the angle at the top
-    size = 50
-    top_angle_point = (int(top_point[0]-size*np.sin(top_angle)),
-                       int(top_point[1]-size*np.cos(top_angle)))
-
-    ## Calc the line for the base
-    base_angle_point = (int(base_point[0]-size*np.sin(base_angle)),
-                        int(base_point[1]-size*np.cos(base_angle)))
-
-    ## Convert to integers
-    base_point = tuple(int(i) for i in base_point)
-    top_point = tuple(int(i) for i in top_point)
-
-    ## Draw lines and points
-    color = (255,0,0)
-    thickness = 2
-    cv2.line(img, base_point, base_angle_point, color, thickness)
-    cv2.line(img, top_point, top_angle_point, color, thickness)
-
-    cv2.circle(img, base_point, 5, color, -1)
-    cv2.circle(img, top_point, 5, color, -1)
-
-    cv2.imshow("showing img", img)
-    cv2.waitKey(1)
+    
+    try:
+        ## Calc the line representing the angle at the top
+        size = 50
+        top_angle_point = (int(top_point[0]-size*np.sin(top_angle)),
+                           int(top_point[1]-size*np.cos(top_angle)))
+    
+        ## Calc the line for the base
+        base_angle_point = (int(base_point[0]-size*np.sin(base_angle)),
+                            int(base_point[1]-size*np.cos(base_angle)))
+    
+        ## Convert to integers
+        base_point = tuple(int(i) for i in base_point)
+        top_point = tuple(int(i) for i in top_point)
+    
+        ## Draw lines and points
+        color = (255,0,0)
+        thickness = 2
+        cv2.line(img, base_point, base_angle_point, color, thickness)
+        cv2.line(img, top_point, top_angle_point, color, thickness)
+    
+        cv2.circle(img, base_point, 5, color, -1)
+        cv2.circle(img, top_point, 5, color, -1)
+    
+        cv2.imshow("showing img", img)
+        cv2.waitKey(1)
+    except ValueError:
+        print("bad img")
 #%
     return img
 
@@ -160,25 +163,28 @@ def save_vid(img_lst, out_path):
 
     outvid_path = out_path.replace(".csv", ".mp4")
     size = img_lst[0].shape
-#    size = (600, 400)
+    # size = (int(size[0]/2),int(size[1]/2))
+    print(size)
     is_color = True
     fps = 12.0
 #    fourcc = cv2.VideoWriter_fourcc(*"XVID") ## .avi
     fourcc = cv2.VideoWriter_fourcc(*'MP4V')  ## .mp4
     vid = cv2.VideoWriter(outvid_path, fourcc, fps, (size[1], size[0]), is_color)
-
+    size = size[:2]
     for img in img_lst:
         ## write to video file
+        # img = cv2.resize(img, size, interpolation = cv2.INTER_AREA)
         vid.write(img)
-#        cv2.imshow("showing img", img)
-#        cv2.waitKey(1)
+        # cv2.imshow("showing img", img)
+        # cv2.waitKey(1)
     vid.release()
-#%
+#%%
 def collect_for_data_for_mu(file_name, output_data):
     """
     gets h5 file, saves data to output data csv file
     """
-#%%
+#%
+
     ## load data from h5
     my_file = h5todict(file_name, path="data/tige0", exclude_names=None)
 
@@ -193,36 +199,19 @@ def collect_for_data_for_mu(file_name, output_data):
 #%
         ## We need the diametere for cut off of the leaf
         diam_array = my_file["diam"][img_i]
-
+        if diam_array[0] == 30000:
+            continue
+       
+    
         diam_array = butter_lowpass_filter(diam_array, 1, 20, 2)
-        ## Choos where to cutoff based on the change in diameter
-#        d_diam_thresh = 3
-#        diam_lost = np.where(abs(np.gradient(diam_array))>d_diam_thresh)[0][0]
-#
-#        ## take care of "jumps" in diameter at the base
-#        cnt = 1
-#        while diam_lost<100:
-#            diam_lost = np.where(abs(np.gradient(diam_array)) > d_diam_thresh)[0][cnt]
-#            cnt +=1
 
-        diam_lost = np.where(abs(np.gradient(diam_array[200:]))>0.30)[0][0] + 200
+        diam_lost = np.where(abs(np.gradient(diam_array[200:]))>0.34)[0][0] + 200
+        
+        # if diam_lost < 500:
+        #     diam_lost = np.where(abs(np.gradient(diam_array[400:]))>0.34)[0][0] + 400
 
         mean_diam = int(np.mean(diam_array[:diam_lost]))*3
 
-
-        print(img_i)
-#        diam_avg_chang = np.where(diam_array > 1.15 * mean_diam )[0][cnt]
-#        ## take care of "jumps" in diameter at the base
-#        cnt = 1
-#        while diam_lost<100:
-#            diam_lost = np.where(abs(np.gradient(diam_array))>d_diam_thresh)[0][cnt]
-#            cnt +=1
-
-#
-#        if diam_avg_chang<diam_lost:
-#            diam_lost = diam_avg_chang
-#
-#
         ## Get x,y coordinates of the center
         yc =  my_file["yc"][img_i][:diam_lost]
         xc =  my_file["xc"][img_i][:diam_lost]
@@ -239,22 +228,28 @@ def collect_for_data_for_mu(file_name, output_data):
         theta_tip = np.mean(theta[img_i][diam_lost - mean_diam :diam_lost])
         theta_base = np.mean(theta[img_i][1:mean_diam])
 
+        
         img = draw_line(tip, theta_tip, base, theta_base, img_i, output_fnames)
 
-        for i in range(diam_lost):
-            point = (int(my_file["xc"][img_i][i]), int(my_file["yc"][img_i][i]))
-            cv2.circle(img, point, 1, (200,100,200), -1)
-
-        for i in range(mean_diam):
-            point = (int(my_file["xc"][img_i][i]), int(my_file["yc"][img_i][i]))
-            cv2.circle(img, point, 2, (55,50,255), -1)
-
-        for i in range(diam_lost - mean_diam, diam_lost):
-            point = (int(my_file["xc"][img_i][i]), int(my_file["yc"][img_i][i]))
-            cv2.circle(img, point, 2, (0,200,0), -1)
-
+        try:
+            for i in range(diam_lost):
+                point = (int(my_file["xc"][img_i][i]), int(my_file["yc"][img_i][i]))
+                cv2.circle(img, point, 1, (200,100,200), -1)
+    
+            for i in range(mean_diam):
+                point = (int(my_file["xc"][img_i][i]), int(my_file["yc"][img_i][i]))
+                cv2.circle(img, point, 2, (55,50,255), -1)
+    
+            for i in range(diam_lost - mean_diam, diam_lost):
+                point = (int(my_file["xc"][img_i][i]), int(my_file["yc"][img_i][i]))
+                cv2.circle(img, point, 2, (0,200,0), -1)
+        except IndexError:
+            pass
         cv2.imshow("showing img", img)
-        cv2.waitKey(1)
+        k = cv2.waitKey(10) & 0xff
+        if k == 27 or k == ord('q'):
+            break
+        
         img_lst.append(img)
 
         ## calc dt
@@ -262,18 +257,33 @@ def collect_for_data_for_mu(file_name, output_data):
         dt = dt.seconds
 
         df.loc[img_i] = (dt, theta_base, theta_tip, base, tip)
-    
+#%%
     ## Close img window
     cv2.destroyAllWindows()
-    
     
     df.to_csv(output_data)
     print("saved to csv file...")
 
     save_vid(img_lst, output_data)
-    print("saved video...")
+    print(f"saved video with {len(img_lst)} frames ({(len(img_lst)*4)/60}H)")
 
-
-file_name = r"C:\Users\Roni\Desktop\grv_testing\0812\interekt_data_3.h5"
-output_data =  r"C:\Users\Roni\Desktop\grv_testing\0812\out_test_3.csv"
+#%%
+file_name = r"C:\Users\Roni\Desktop\grv_testing\011221\set2\interekt_data_2.h5"
+output_data =  r"C:\Users\Roni\Desktop\grv_testing\011221\set2\out_test_2.csv"
+#%%
 collect_for_data_for_mu(file_name, output_data)
+
+# #%%
+# for i in range(1,6):
+#     if i == 20:
+#         continue
+#     else:
+#         file_name = r"C:\Users\Roni\Desktop\grv_testing\011221\set1\interekt_data_{}.h5".format(i)
+#         output_data =  r"C:\Users\Roni\Desktop\grv_testing\011221\set1\out_test_{}.csv".format(i)
+#         collect_for_data_for_mu(file_name, output_data)
+#%%% junk!
+
+
+# from matplotlib import pyplot as plt
+# plt.plot(abs(np.gradient(diam_array[200:])))
+# plt.show()
