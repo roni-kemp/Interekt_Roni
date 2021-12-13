@@ -262,15 +262,18 @@ def collect_for_data_for_mu(file_name, output_data):
         dt = dt.seconds
 
         df.loc[img_i] = (dt, theta_base, theta_tip, base, tip)
-    #%%
+    
+    ## Close img window
+    cv2.destroyAllWindows()
+    
+    
     df.to_csv(output_data)
+    print("saved to csv file...")
 
-#    finally:
-#        try:
-    save_vid(img_lst, out_path)
+    save_vid(img_lst, output_data)
     print("saved video...")
-#        except()
 
-file_name = r"C:\Users\YasmineMnb\Desktop\transfer_folder\grv_testing\011221\set2\interekt_data_1.h5"
-output_data =  r"C:\Users\YasmineMnb\Desktop\transfer_folder\grv_testing\011221\set2\out_test_1.csv"
-collect_for_data_for_mu(file_path, out_path)
+
+file_name = r"C:\Users\Roni\Desktop\grv_testing\0812\interekt_data_3.h5"
+output_data =  r"C:\Users\Roni\Desktop\grv_testing\0812\out_test_3.csv"
+collect_for_data_for_mu(file_name, output_data)
