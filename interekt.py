@@ -33,8 +33,10 @@ Changes:
 25/05/2015: [Hugo] Ajout des menus pour l'export des moyennes par tiges et pour toutes les tiges + figures
 20/05/2015: [Hugo] Première version
 """
-
 from __future__ import (unicode_literals, absolute_import, division, print_function)
+
+import time
+start_t = time.perf_counter()
 
 import sys, os
 if sys.version_info[0] < 3:
@@ -5095,9 +5097,9 @@ class LanguageSelector:
 
 ################################ Main windows #################################
 if __name__ == '__main__':
-
+	
     root = Tk.Tk()
-
+    print(time.perf_counter() - start_t)
     ls = LanguageSelector(root)
 
     # If a data file has been given in command line
