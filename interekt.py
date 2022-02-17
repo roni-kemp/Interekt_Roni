@@ -107,7 +107,7 @@ import interekt_hdf5_store as h5store
 
 from Extrawidgets import DraggableLines, DraggablePoints
 
-__version__ = '2020-10-05'
+__version__ = '2022-02-17_Roni_test'
 
 ########################## GLOBAL DATA ########################################
 strings = dict()  # strings for the user interface, with gettext
@@ -4835,16 +4835,29 @@ class Interekt:
         #OLD, ('Images', '*.jpg,*.JPG'), ('Projet', '*.pkl')
         #ftypes = [('all files', '.*'), ('Images', '*.jpg,*.JPG'), ('Projet', '*.pkl')]
 
-        #todo  filetypes=ftypes
+        #TODO  filetypes=ftypes
         files = filedialog.askopenfilenames(parent=root,
                                             title=_("Choose images to process"))
+        #
+        if len(files)>1:
+            for file_i in files:
+                if ".h5" in file_i:
+                    print(40 * "#")
+                    print("you already have a h5 file!\n")
+                    input("press enter to continue and overwrite...")
+                    print(40 * "#")
+                    lst = list(files)
+                    lst.remove(file_i)
+                    files = tuple(lst)
+                
 
         if files != '' and len(files) > 0:
 
             base_dir_path = os.path.dirname(files[0]) + '/'
 
-            #Test si c'est un fichier de traitement ou des images qui sont chargées
-
+            # Test si c'est un fichier de traitement ou des images qui sont chargées
+            
+            # Doesn't work with windows - the h5 is not the [0] file...            
             if '.h5' in files[0]:  # regular hdf5 data file
 
                 reset_graph_data()
@@ -4858,6 +4871,7 @@ class Interekt:
                 # On charge le fichier
                 load_hdf5_file(hdf5file)
 
+                
             elif '.pkl' in files[0]:  # outdated cPickle data file
 
                 # When run with Python 3, Interekt can not open these files.
