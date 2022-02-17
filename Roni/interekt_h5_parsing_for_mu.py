@@ -195,17 +195,22 @@ def collect_for_data_for_mu(file_name, output_data):
 
     img_lst = []
 
-    for img_i in range(0, len_img_lst):
+    for img_i in range(50, len_img_lst):
 #%
         ## We need the diametere for cut off of the leaf
         diam_array = my_file["diam"][img_i]
         if diam_array[0] == 30000:
             continue
-       
+        print(img_i)
+        if len(diam_array)<=200:
+            print("error\n\n\n")
     
         diam_array = butter_lowpass_filter(diam_array, 1, 20, 2)
-
-        diam_lost = np.where(abs(np.gradient(diam_array[200:]))>0.34)[0][0] + 200
+        
+        try: 
+            diam_lost = np.where(abs(np.gradient(diam_array[200:]))>0.34)[0][0] + 200
+        except IndexError:
+            continue
         
         # if diam_lost < 500:
         #     diam_lost = np.where(abs(np.gradient(diam_array[400:]))>0.34)[0][0] + 400
@@ -257,7 +262,7 @@ def collect_for_data_for_mu(file_name, output_data):
         dt = dt.seconds
 
         df.loc[img_i] = (dt, theta_base, theta_tip, base, tip)
-#%%
+#%
     ## Close img window
     cv2.destroyAllWindows()
     
@@ -268,9 +273,9 @@ def collect_for_data_for_mu(file_name, output_data):
     print(f"saved video with {len(img_lst)} frames ({(len(img_lst)*4)/60}H)")
 
 #%%
-file_name = r"C:\Users\Roni\Desktop\grv_testing\011221\set2\interekt_data_2.h5"
-output_data =  r"C:\Users\Roni\Desktop\grv_testing\011221\set2\out_test_2.csv"
-#%%
+file_name = r"C:\Users\Roni\Desktop\transfer folder\bi 350 v 300\220206\IR\1__Croped_4\interekt_data.h5"
+output_data =  r"C:\Users\Roni\Desktop\transfer folder\bi 350 v 300\220206\IR\1__Croped_4\out_test_2.csv"
+#%
 collect_for_data_for_mu(file_name, output_data)
 
 # #%%
