@@ -1002,6 +1002,7 @@ def launch_process():
     """
     Fonction pour lancer le traitement des images chargées dans
     Interekt pour les tiges tracées.
+    Function to start the processing of images loaded in Interect to trace stems
     """
     global data_out, old_step, thread_process, Crops_data
 
@@ -1412,6 +1413,7 @@ def show_time_series(tige_id=None):
 
     # Retrieving useful data as time-indexed arrays
     radii = tiges_data.diam[cur_tige].mean(axis=1)   # space-averaged tige radii
+    radius_Roni = tiges_data.diam[cur_tige]
     x, y, s, lengths, angles, tip_angles, measure_zone, lines = \
             load_postprocessed_data(hdf5file, tige_hdf_id)
 
@@ -1450,7 +1452,7 @@ def show_time_series(tige_id=None):
         lines = lines[mask]
 
     # Subplot with tige profiles
-    axProfiles = fig_time.add_subplot(grid[:,0])
+    axProfiles = fig_time.add_subplot(grid[:4,0])
     lcollec = LineCollection(lines, linewidth=(2,), cmap='viridis')
     lcollec.set_array(times)
     axProfiles.add_collection(lcollec)
@@ -1463,7 +1465,16 @@ def show_time_series(tige_id=None):
         # The steady-state profile is colored in red
         lcollec_ss = LineCollection([steady_state_line], linewidth=(2,), color='red')
         axProfiles.add_collection(lcollec_ss)
-
+    
+    ## add radius v s
+    ax_rvs = fig_time.add_subplot(grid[4:,0])
+    ax_rvs.set_xlabel("S[pix]")
+    ax_rvs.set_ylabel("r[pix]")
+    ax_rvs.set_xlim((0, s.max()))
+    ax_rvs.set_ylim((radius_Roni.min()-2, radius_Roni.max()+2))
+#    ax_rvs.plot(s, radius_Roni)#, '-', color=tiges_colors[cur_tige], lw=2)
+    
+    ## adding plots of angle, length and radius
     axAngle = fig_time.add_subplot(grid[:2, 1:])
     axAngle.grid(True)
     axAngle.xaxis.set_major_locator(MultipleLocator(graduation))
@@ -1501,6 +1512,14 @@ def show_time_series(tige_id=None):
         xt = x[cur_image, ~x[cur_image].mask]
         yt = y[cur_image, ~y[cur_image].mask]
         colortige, = axProfiles.plot(xt, yt, 'k', lw=2.5)
+        
+        radius_Roni_t = radius_Roni[cur_image, ~radius_Roni[cur_image].mask]
+        s_R_t = s[cur_image, ~s[cur_image].mask]
+        shorter_R = min([len(radius_Roni_t), len(s_R_t)])
+        s_R_t = s_R_t[:shorter_R]
+        radius_Roni_t = radius_Roni_t[:shorter_R]
+        colortige_R, = ax_rvs.plot(s_R_t, radius_Roni_t, 'k')#, lw=2.5)
+        
         # ...and mark the current time as a vertical dotted line in time series.
         time_select_angle, = axAngle.plot([cur_time, cur_time], axAngle.get_ylim(),
                                           'k--', lw=1.5)
@@ -1519,8 +1538,17 @@ def show_time_series(tige_id=None):
             image = ((times - event.xdata)**2).argmin()
             xt = x[image, ~x[image].mask]
             yt = y[image, ~y[image].mask]
+            
+            radius_Roni_t = radius_Roni[cur_image, ~radius_Roni[image].mask]
+            s_R_t = s[cur_image, ~s[image].mask]
+            shorter_R = min([len(radius_Roni_t), len(s_R_t)])
+            
+            s_R_t = s_R_t[:shorter_R]
+            radius_Roni_t = radius_Roni_t[:shorter_R]
+            
             try:
                 colortige.set_data(xt, yt)
+                colortige_R.set_data(s_R_t, radius_Roni_t)
             except Exception as e:
                 print(e)
 
@@ -4061,6 +4089,10 @@ class Interekt:
         print('you pressed %s'%event.key)
         key_press_handler(event, self.canvas, self.toolbar)
 
+        if event.key == 'enter':
+            print("not nice...")
+            # launch_process()
+
         if event.key == '+':
             add_tige = True
             nbclick = 0
@@ -4854,7 +4886,6 @@ class Interekt:
         if files != '' and len(files) > 0:
 
             base_dir_path = os.path.dirname(files[0]) + '/'
-
             # Test si c'est un fichier de traitement ou des images qui sont chargées
             
             # Doesn't work with windows - the h5 is not the [0] file...            
@@ -4889,6 +4920,7 @@ class Interekt:
 
                 else:  # If Python 2 is used, the pkl file is converted into hdf5.
                     output_hdf5_file = base_dir_path + 'interekt_data.h5'
+                    
                     hdf5file = output_hdf5_file
 
                     # Does the h5 file already exist?
@@ -4914,9 +4946,17 @@ class Interekt:
 
             else:  # hopefuly, a list of images
 
-                # Nom du fichier
-                hdf5file = base_dir_path + 'interekt_data.h5'
-
+                ## Original file name
+                # hdf5file = base_dir_path + 'interekt_data.h5'
+                
+                ## my new file naming: fix this ugly mess...
+                # base_dir_path_1 = os.path.dirname(os.path.dirname(files[0]))
+                location = base_dir_path.split("/")[-2][-1]
+                orientation = base_dir_path.split("/")[-3][-1]
+                r_date = base_dir_path.split("/")[-4]
+                base_dir_path = os.path.dirname(os.path.dirname(files[0])) + "/"
+                hdf5file = base_dir_path + f'interekt_{r_date}_{orientation}_{location}.h5'
+                
                 # Si on ouvre des images, il faut verifier que le fichier
                 # h5 n'existe pas sinon on le supprime en mettant un
                 # message d'avertissement.
