@@ -8,6 +8,13 @@ This an early public release of the code, a documentation is in preparation.
 
 ![Screenshot](https://github.com/hchauvet/RootStemExtractor/raw/master/img/Screenshot1.png "screenshot")
 
+## V Roni
+fix window scaling
+open should supress all bases and close time series
+
+
+
+
 # ChangeLog
 
 * version 06092019:
